@@ -1,9 +1,7 @@
 package com.blu.reservation.functional;
 
 import com.blu.reservation.AbstractIntegrationSpringTest;
-import com.blu.reservation.controller.dto.DeleteReservationDto;
 import com.blu.reservation.controller.dto.ReservationDto;
-import com.blu.reservation.model.DoctorReservation;
 import com.blu.reservation.model.PanelUser;
 import com.blu.reservation.model.Role;
 import com.blu.reservation.model.repository.ReservationRepository;
@@ -141,7 +139,7 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
         //************************
         //          WHEN
         //************************
-        String restResponseMessage = performDeleteRequest("/appointment/" + doctor.getId() + "123", 404);
+        String restResponseMessage = performDeleteRequest("/appointment/" + doctor.getId() + "/123", 404);
         //************************
         //          THEN
         //************************
@@ -162,11 +160,12 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
         //************************
         //          WHEN
         //************************
-        String restResponseMessage = performDeleteRequest("/appointment/" + doctor.getId() + takenReservationId, 406);
+        String restResponseMessage = performDeleteRequest("/appointment/" + doctor.getId() + "/" +takenReservationId,
+            406);
         //************************
         //          THEN
         //************************
-        Assertions.assertEquals("This Reservation time has been taken by a user!", restResponseMessage);
+        Assertions.assertEquals("Can not delete, This Reservation time has been taken by a user!", restResponseMessage);
     }
 }
 

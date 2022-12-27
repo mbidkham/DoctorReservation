@@ -46,7 +46,7 @@ public class TimeReservationService {
         }
     }
 
-    @Transactional(rollbackOn = Exception.class)
+    @Transactional()
     public void deleteNotTakenTimes(int timeId){
         timeReservationValidator.deleteOldTimesValidation(timeId);
         reservationRepository.deleteById(timeId);

@@ -1,10 +1,8 @@
 package com.blu.reservation.functional;
 
 import com.blu.reservation.AbstractIntegrationSpringTest;
-import com.blu.reservation.controller.dto.ReservationDto;
 import com.blu.reservation.controller.dto.ReservationPatientViewDto;
 import com.blu.reservation.controller.dto.SearchReservationPatientDto;
-import com.blu.reservation.controller.dto.TakeOpenTimeDto;
 import com.blu.reservation.model.DoctorReservation;
 import com.blu.reservation.model.PanelUser;
 import com.blu.reservation.model.Role;
@@ -59,7 +57,7 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
         //************************
         //          WHEN
         //************************
-        String availableTimes = performPostRequest("/reservation/" + patient.getId(), input, 200);
+        String availableTimes = performPostRequest("/reservation/available/" + patient.getId(), input, 200);
         //************************
         //          THEN
         //************************
@@ -102,7 +100,7 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
         //************************
         //          WHEN
         //************************
-        String restResponseMessage = performPostRequest("/reservation/" + patient.getId(), body, 400);
+        String restResponseMessage = performPostRequestByJson("/reservation/" + patient.getId(), body, 400);
         //************************
         //          THEN
         //************************

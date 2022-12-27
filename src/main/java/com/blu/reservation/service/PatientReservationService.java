@@ -52,7 +52,7 @@ public class PatientReservationService {
             .collect(Collectors.toList());
     }
 
-    @Transactional(rollbackOn = Transactional.class)
+    @Transactional()
     public void reserveOpenTime(TakeOpenTimeDto takeOpenTimeDto, Integer userId) {
         PanelUser currentUser = userRepository.findById(userId).orElseThrow();
         currentUser.setFullName(takeOpenTimeDto.getFullName());

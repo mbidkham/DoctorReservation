@@ -1,11 +1,8 @@
 package com.blu.reservation.controller;
 
-import com.blu.reservation.aspect.CheckAccess;
-import com.blu.reservation.controller.dto.AddAvailableTimeDto;
 import com.blu.reservation.controller.dto.ReservationPatientViewDto;
 import com.blu.reservation.controller.dto.SearchReservationPatientDto;
 import com.blu.reservation.controller.dto.TakeOpenTimeDto;
-import com.blu.reservation.model.Role;
 import com.blu.reservation.service.PatientReservationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,14 +26,12 @@ public class PatientReservationController {
         return new ResponseEntity<>(patientReservationService.getAllOpenTimes(inputDate.getSearchDate()), HttpStatus.OK);
     }
 
-    @CheckAccess(Role.Constants.PATIENT)
     @PostMapping("/{userId}")
     public ResponseEntity<String> addTimes(@Valid @RequestBody TakeOpenTimeDto inputData,
                                            @PathVariable Integer userId) {
         patientReservationService.reserveOpenTime(inputData, userId);
         return new ResponseEntity<>(RestMessages.RESERVE_TIME_MESSAGE, HttpStatus.OK);
     }
-    @CheckAccess(Role.Constants.PATIENT)
     @GetMapping("/{userId}/{phoneNumber}")
     public ResponseEntity<List<ReservationPatientViewDto>> getReservedTimes(@PathVariable Integer userId,
                                                                             @PathVariable String phoneNumber) {

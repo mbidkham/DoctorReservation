@@ -1,7 +1,6 @@
 package com.blu.reservation.model;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -26,10 +25,4 @@ public class DoctorReservation {
     @JoinColumn(name = "PATIENT_ID")
     private PanelUser patient;
 
-    public DoctorReservation(LocalDateTime startTime, LocalDateTime endTime, boolean reserved, PanelUser patient) {
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.reserved = reserved;
-        this.patient = patient;
-    }
 }

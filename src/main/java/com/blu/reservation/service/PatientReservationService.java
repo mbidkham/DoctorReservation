@@ -10,6 +10,7 @@ import com.blu.reservation.model.repository.ReservationRepository;
 import com.blu.reservation.model.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -65,7 +66,11 @@ public class PatientReservationService {
             throw new RestResponseException("This Time has been taken by another user!");
         }
         reservation.setPatient(currentUser);
-        reservationRepository.save(reservation);
+        try {
+            reservationRepository.save(reservation);
+        }catch (InvalidDataAccessApiUsageException deletedObjectException){
+            throw new RestResponseException("This Reservation doesn't exist or has been deleted.");
+        }
     }
 
 }

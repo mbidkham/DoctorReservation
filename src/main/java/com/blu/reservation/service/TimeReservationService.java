@@ -2,16 +2,13 @@ package com.blu.reservation.service;
 
 import com.blu.reservation.controller.dto.AddAvailableTimeDto;
 import com.blu.reservation.controller.dto.ReservationDto;
+import com.blu.reservation.exception.RestResponseException;
 import com.blu.reservation.model.DoctorReservation;
-import com.blu.reservation.model.PanelUser;
-import com.blu.reservation.model.Role;
 import com.blu.reservation.model.repository.ReservationRepository;
-import com.blu.reservation.model.repository.UserRepository;
 import com.blu.reservation.service.validators.TimeReservationValidator;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -25,11 +22,8 @@ public class TimeReservationService {
     private final ModelMapper modelMapper;
     private final ReservationRepository reservationRepository;
     private final TimeReservationValidator timeReservationValidator;
-    private final UserRepository userRepository;
 
     public void addDoctorTimes(AddAvailableTimeDto input) {
-        PanelUser user = new PanelUser("Mehraneh", "09381879001", Role.DOCTOR);
-        userRepository.save(user);
         timeReservationValidator.addNewTimesValidation(input.getStartTime(), input.getEndTime());
         reservationRepository.saveAll(splitTimeIntoMultipleReservations(input.getStartTime(), input.getEndTime()));
     }
@@ -49,7 +43,10 @@ public class TimeReservationService {
     @Transactional()
     public void deleteNotTakenTimes(int timeId){
         timeReservationValidator.deleteOldTimesValidation(timeId);
-        reservationRepository.deleteById(timeId);
+        long hasDeleted = reservationRepository.deleteByIdAndPatientIsNull(timeId);
+        if(hasDeleted != 1){
+            throw new RestResponseException("Can not delete, This Reservation time has been taken by a user!");
+        }
     }
 
     private ArrayList<DoctorReservation> splitTimeIntoMultipleReservations(LocalDateTime start, LocalDateTime end) {

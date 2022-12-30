@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class DoctorTimesTest extends AbstractIntegrationSpringTest {
     @RegisterExtension
     static WireMockExtension wiremock = WireMockExtension.newInstance()
@@ -38,6 +38,9 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
 
     @BeforeEach
     void init() {
+        reservationRepository.deleteAll();
+        userRepository.deleteAll();
+
         registerUser("Doki", "09381879001", Role.DOCTOR);
         registerUser("PATIENT", "09123361386", Role.PATIENT);
     }

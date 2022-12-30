@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 class PatientReservationTest extends AbstractIntegrationSpringTest {
     @RegisterExtension
     static WireMockExtension wiremock = WireMockExtension.newInstance()
@@ -41,6 +41,9 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
 
     @BeforeEach
     void init() {
+        reservationRepository.deleteAll();
+        userRepository.deleteAll();
+
         registerUser("PATIENT", "09123361386", Role.PATIENT);
     }
 

@@ -39,7 +39,13 @@ public abstract class AbstractIntegrationSpringTest extends SpringMockMVCHelper 
         if (patientId != 0) {
             patient = userRepository.findById(patientId).orElseThrow();
         }
-        DoctorReservation doctorReservation = new DoctorReservation(start, end, isReserved, patient);
+        DoctorReservation doctorReservation = DoctorReservation
+            .builder()
+            .startTime(start)
+            .endTime(end)
+            .reserved(isReserved)
+            .patient(patient)
+            .build();
         reservationRepository.save(doctorReservation);
     }
 }

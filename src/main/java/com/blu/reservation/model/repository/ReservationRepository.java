@@ -17,4 +17,6 @@ public interface ReservationRepository extends JpaRepository<DoctorReservation,I
 
     List<DoctorReservation> findAllByPatient_PhoneNumber(String phoneNumber);
 
+    long deleteByIdAndPatientIsNull(int id);
+
 }

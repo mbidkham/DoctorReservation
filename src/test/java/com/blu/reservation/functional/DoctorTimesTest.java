@@ -109,7 +109,8 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
         //          Given
         //************************
         PanelUser doctor = userRepository.findAllByRole(Role.DOCTOR).get(0);
-        addReservationTimes(LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), true, 2);
+        PanelUser patient = userRepository.findAllByRole(Role.PATIENT).get(0);
+        addReservationTimes(LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), true, patient.getId());
         addReservationTimes(LocalDateTime.now().plusMinutes(30), LocalDateTime.now().plusMinutes(60), false, 0);
         //************************
         //          WHEN

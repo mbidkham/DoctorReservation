@@ -12,6 +12,8 @@
     <artifactId>Reservation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>DoctorReservation</description>
+    <packaging>jar</packaging>
+
     <properties>
         <java.version>11</java.version>
     </properties>

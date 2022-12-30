@@ -9,7 +9,13 @@ Patient View (user):
 * Reserve any time you need by entering the name and phone number.
 * See all the recent reserved times.
 # Getting Started
-We have to add dockerfile soon!
+* Docker:
+  docker build -t doctor-reservation
+  docker run -dp 3000:3000 getting-started
+* Install Maven, Jdk11:
+  * cd into the project's root directory
+  * ./mvnw clean package
+  * java -jar target/Reservation-0.0.1-SNAPSHOT.jar com.blu.reservation.DoctorReservationApplication
 Now you can use this app by :
 - mvn install
 ### Guides

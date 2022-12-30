@@ -16,8 +16,6 @@ Patient View (user):
   * cd into the project's root directory
   * ./mvnw clean package
   * java -jar target/Reservation-0.0.1-SNAPSHOT.jar com.blu.reservation.DoctorReservationApplication
-Now you can use this app by :
-- mvn install
 ### Guides
 This application does not include tokens and authentication process, 
 but every rest service, gets a userId as input to indicate who you are when using the app.

@@ -10,8 +10,8 @@ Patient View (user):
 * See all the recent reserved times.
 # Getting Started
 * Docker:
-  docker build -t doctor-reservation
-  docker run -dp 3000:3000 getting-started
+  * docker build -t doctor-reservation
+  * docker run -dp 3000:3000 getting-started
 * Install Maven, Jdk11:
   * cd into the project's root directory
   * ./mvnw clean package

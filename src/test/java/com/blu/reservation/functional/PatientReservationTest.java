@@ -49,7 +49,7 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
 
 
     @Test
-    void ShouldReturnEmptyListWHENNoAppointmentIsOpen() throws Exception {
+    void Should_Return_EmptyList_WHEN_Appointment_IsOpen() throws Exception {
         //************************
         //          Given
         //************************
@@ -69,7 +69,7 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void ShouldReturn400WHENPhoneNumberIsNull() throws Exception {
+    void Should_Return_400_WHEN_PhoneNumber_Is_Null() throws Exception {
         //************************
         //          Given
         //************************
@@ -90,7 +90,7 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
 
 
     @Test
-    void ShouldReturnErrorWHENAppointmentIsTaken() throws Exception {
+    void Should_Return_Error_WHEN_Appointment_Is_Taken() throws Exception {
         //************************
         //          Given
         //************************
@@ -111,7 +111,7 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void ShouldReturnEmptyListWHENUserHaveNoReservation() throws Exception {
+    void Should_Return_EmptyList_WHEN_User_Have_No_Reservation() throws Exception {
         //************************
         //          Given
         //************************
@@ -129,7 +129,7 @@ class PatientReservationTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void ShouldReturnUserReservationListPatientView() throws Exception {
+    void Should_Return_User_ReservationList_Patient_View() throws Exception {
         //************************
         //          Given
         //************************

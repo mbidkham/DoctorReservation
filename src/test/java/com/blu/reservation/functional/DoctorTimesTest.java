@@ -46,7 +46,7 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void ShouldThrowExceptionWHENStartIsfAfterEndTime() throws Exception {
+    void Should_Throw_Exception_WHEN_Start_Is_After_EndTime() throws Exception {
         //************************
         //          Given
         //************************
@@ -65,7 +65,7 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void NoTimeAddedWHENTimePeriodIsLessThan30Minutes() throws Exception {
+    void NoTime_Added_WHEN_TimePeriod_Is_Less_Than_30Minutes() throws Exception {
         //************************
         //          Given
         //************************
@@ -86,7 +86,7 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void DoctorSeeEmptyListWhenNoTimeIsAvailable() throws Exception {
+    void Doctor_See_EmptyList_When_NoTime_Is_Available() throws Exception {
         //************************
         //          Given
         //************************
@@ -104,7 +104,7 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void DoctorSeeAllTimesAndUsersInfos() throws Exception {
+    void Doctor_See_AllTimes_And_UsersInfos() throws Exception {
         //************************
         //          Given
         //************************
@@ -132,7 +132,7 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void ShouldGet404WHENDoctorDeleteAppointmentWhichIsNotExist() throws Exception {
+    void Should_Get_404_WHEN_Doctor_Delete_Appointment_Which_IsNotExist() throws Exception {
         //************************
         //          Given
         //************************
@@ -151,7 +151,7 @@ class DoctorTimesTest extends AbstractIntegrationSpringTest {
     }
 
     @Test
-    void ShouldGet406WHENDoctorDeleteTakenAppointment() throws Exception {
+    void Should_Get_406_WHEN_Doctor_Delete_TakenAppointment() throws Exception {
         //************************
         //          Given
         //************************
